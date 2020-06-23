@@ -24,8 +24,3 @@ body {
     position: absolute;
     align-items: center;
 }
-.aside {
-    position: absolute;
-    left: 100%;
-    background-color: black;
-}

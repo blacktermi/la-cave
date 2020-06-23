@@ -1,0 +1,38 @@
+.para1 {
+    font-size: 50px;
+    margin-bottom: 150px;
+}
+.product-header {
+    width: 100%;
+    max-width: 650px;
+    display: flex;
+    justify-content: flex-start;
+    margin: 0 auto;   
+}
+
+.product-title {
+    width: 45%;
+    border-bottom: 4px solid black;
+}
+
+.price {
+    width: 15%;
+    display: flex;
+    align-items: center;
+    border-bottom: 4px solid black;
+}
+
+.quantity {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    border-bottom: 4px solid black;
+}
+
+.total {
+    width: 10%;
+    display: flex;
+    align-items: center;
+    border-bottom: 4px solid black;
+    border-right: 10px;
+}
