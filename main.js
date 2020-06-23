@@ -9,8 +9,8 @@ let products =[
     },
     {
         name : 'jack daniel',
-        tag: 'whisky',
-        price: 5000,
+        tag: 'whiskyblack',
+        price: 8000,
         inCart: 0
     },
     {
@@ -65,11 +65,20 @@ let products =[
 
 for (let i=0; i < carts.length; i++) {
     carts[i].addEventListener('click', ()=> {
-        cartNumbers();
+        cartNumbers(products[i]);
     })
 }
 
-function cartNumbers() {
+function onloadCartNumbers() {
+    let productNumbers = localStorage.getItem('cartNumbers');
+
+    if(productNumbers) {
+        document.querySelector('.cart span').textContent = productNumbers;
+    }
+}
+
+function cartNumbers(product) {
+    
     let productNumbers = localStorage.getItem('cartNumbers');
     
 
@@ -83,4 +92,31 @@ function cartNumbers() {
         document.querySelector('.cart span').textContent = 1;
     }
     
+
+    setItems(product);
 }
+
+function setItems(product) {
+    let cartItems = localStorage.getItem('productsIncart');
+    cartItems = JSON.parse(cartItems);
+
+    if(cartItems != null) {
+
+        if(cartItems[product.tag] == undefined) {
+            cartItems = {
+                ...cartItems,
+                [product.tag]: product
+            }
+        }
+        cartItems[product.tag].inCart += 1;
+    } else {
+        product.inCart = 1;
+        cartItems = {
+            [product.tag]: product
+        }
+    }
+    
+    
+    localStorage.setItem("productsIncart", JSON.stringify (cartItems));
+}
+onloadCartNumbers();
